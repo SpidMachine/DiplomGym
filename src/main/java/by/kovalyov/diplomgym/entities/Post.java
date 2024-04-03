@@ -1,8 +1,7 @@
-package by.kovalyov.diplomgym.entityes;
+package by.kovalyov.diplomgym.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

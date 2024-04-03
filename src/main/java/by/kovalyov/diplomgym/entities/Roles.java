@@ -1,4 +1,4 @@
-package by.kovalyov.diplomgym.entityes;
+package by.kovalyov.diplomgym.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
