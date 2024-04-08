@@ -35,10 +35,13 @@ public class UserServiceImpl implements UserService {
     public User updateUser(Long id, User user) {
         User _user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
 
-        _user.setLogin(user.getLogin());
-        _user.setPassword(user.getPassword());
+        _user.setFirstName(user.getFirstName());
+        _user.setSecondName(user.getSecondName());
         _user.setEmail(user.getEmail());
-        _user.setRole(user.getRole());
+        _user.setPassword(user.getPassword());
+        _user.setBirthday(user.getBirthday());
+        _user.setGender(user.getGender());
+        _user.setPhoneNumber(user.getPhoneNumber());
         userRepository.save(_user);
 
         return _user;

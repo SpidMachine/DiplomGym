@@ -16,22 +16,25 @@ public class Coach {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "login")
+    @Column(name = "first_name")
     @NotNull
     @Size(min = 3, max = 20)
-    private String login;
+    private String firstName;
 
-    @Column(name = "password")
+    @Column(name = "second_name")
     @NotNull
     @Size(min = 3, max = 20)
-    private String password;
+    private String secondName;
 
-    @Column(name = "name")
+    @Column(name = "email")
     @NotNull
-    @Size(min = 3, max = 20)
-    private String name;
+    private String email;
 
-    @Column(name = "experience")
+    @Column(name = "phone_number")
     @NotNull
-    private int experience;
+    private String phoneNumber;
+
+    @Column(name = "specialization")
+    @NotNull
+    private String specialization;
 }
