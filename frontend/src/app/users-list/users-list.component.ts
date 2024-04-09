@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../user";
+import {User} from "../entities/user";
 import {UserService} from "../user.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";

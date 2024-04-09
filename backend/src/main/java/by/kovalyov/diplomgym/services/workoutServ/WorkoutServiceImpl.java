@@ -33,7 +33,7 @@ public class WorkoutServiceImpl implements WorkoutService {
     public Workout updateWorkout(Long id, Workout workout) {
         Workout _workout = workoutRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
 
-        _workout.setNameOfGymPost(workout.getNameOfGymPost());
+        _workout.setNameOfTraining(workout.getNameOfTraining());
         _workout.setStartTraining(workout.getStartTraining());
         _workout.setEndTraining(workout.getEndTraining());
         _workout.setDayWeek(workout.getDayWeek());

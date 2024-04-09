@@ -18,9 +18,9 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name_of_gym_post")
+    @Column(name = "name_of_training")
     @NotNull
-    private String nameOfGymPost;
+    private String nameOfTraining;
 
     @Column(name = "start_training")
     @NotNull
