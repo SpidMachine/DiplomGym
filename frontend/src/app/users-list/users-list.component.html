@@ -3,21 +3,25 @@
     <thead>
     <tr>
       <th>ID</th>
-      <th>Role_id</th>
-      <th>Login</th>
-      <th>Name</th>
-      <th>Password</th>
-      <th>Email</th>
+      <th>firstName</th>
+      <th>lastName</th>
+      <th>password</th>
+      <th>email</th>
+      <th>gender</th>
+      <th>birthday</th>
+      <th>phoneNumber</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of users">
       <td>{{ user.id }}</td>
-      <td>{{ user.roleId }}</td>
-      <td>{{ user.login }}</td>
-      <td>{{ user.name }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
       <td>{{ user.password }}</td>
       <td>{{ user.email }}</td>
+      <td>{{ user.gender }}</td>
+      <td>{{ user.birthday }}</td>
+      <td>{{ user.phoneNumber }}</td>
     </tr>
     </tbody>
   </table>

@@ -1,7 +1,7 @@
 export class User {
   id: number = 0;
   firstName: String = ""
-  secondName: String = "";
+  lastName: String = "";
   email: String = "";
   password: String = "";
   birthday: Date = new Date();

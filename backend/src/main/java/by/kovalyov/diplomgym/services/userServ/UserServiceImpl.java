@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         User _user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
 
         _user.setFirstName(user.getFirstName());
-        _user.setSecondName(user.getSecondName());
+        _user.setLastName(user.getLastName());
         _user.setEmail(user.getEmail());
         _user.setPassword(user.getPassword());
         _user.setBirthday(user.getBirthday());

@@ -25,10 +25,10 @@ public class User {
     @Size(min = 3, max = 20)
     private String firstName;
 
-    @Column(name = "second_name")
+    @Column(name = "last_name")
     @NotNull
     @Size(min = 3, max = 20)
-    private String secondName;
+    private String lastName;
 
     @Column(name = "email")
     @NotNull

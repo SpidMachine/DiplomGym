@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../entities/user";
-import {UserService} from "../user.service";
+import {UserService} from "../services/user.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {HttpClientModule} from "@angular/common/http";
 
@@ -15,7 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.css'
 })
-export class UsersListComponent implements OnInit{
+export class UsersListComponent implements OnInit {
   users: User[] | undefined;
 
   constructor(private userService: UserService) {  }
