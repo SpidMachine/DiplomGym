@@ -1,6 +1,6 @@
 package by.kovalyov.diplomgym.services.userServ;
 
-import by.kovalyov.diplomgym.entities.User;
+import by.kovalyov.diplomgym.entities.UserGym;
 import by.kovalyov.diplomgym.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,41 +17,41 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(Long id) {
+    public UserGym findUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
     }
 
     @Override
-    public List<User> findAllUsers() {
+    public List<UserGym> findAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserGym createUser(UserGym userGym) {
+        return userRepository.save(userGym);
     }
 
     @Override
-    public User updateUser(Long id, User user) {
-        User _user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+    public UserGym updateUser(Long id, UserGym userGym) {
+        UserGym _userGym = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
 
-        _user.setFirstName(user.getFirstName());
-        _user.setLastName(user.getLastName());
-        _user.setEmail(user.getEmail());
-        _user.setPassword(user.getPassword());
-        _user.setBirthday(user.getBirthday());
-        _user.setGender(user.getGender());
-        _user.setPhoneNumber(user.getPhoneNumber());
-        userRepository.save(_user);
+        _userGym.setFirstName(userGym.getFirstName());
+        _userGym.setLastName(userGym.getLastName());
+        _userGym.setEmail(userGym.getEmail());
+        _userGym.setPassword(userGym.getPassword());
+        _userGym.setBirthday(userGym.getBirthday());
+        _userGym.setGender(userGym.getGender());
+        _userGym.setPhoneNumber(userGym.getPhoneNumber());
+        userRepository.save(_userGym);
 
-        return _user;
+        return _userGym;
     }
 
     @Override
-    public User deleteUser(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+    public UserGym deleteUser(Long id) {
+        UserGym userGym = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         userRepository.deleteById(id);
-        return user;
+        return userGym;
     }
 
 

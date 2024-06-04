@@ -24,7 +24,6 @@ public class Workout {
     private String nameOfTraining;
 
     @Column(name = "start_training")
-    @DateTimeFormat(iso = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime startTraining;
 

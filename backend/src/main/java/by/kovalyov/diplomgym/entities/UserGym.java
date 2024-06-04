@@ -2,54 +2,50 @@ package by.kovalyov.diplomgym.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-public class User {
+public class UserGym {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "first_name")
-    @NotNull
-    @Size(min = 3, max = 20)
+    @Size(min = 3, max = 100)
     private String firstName;
 
     @Column(name = "last_name")
-    @NotNull
-    @Size(min = 3, max = 20)
+    @Size(min = 3, max = 100)
     private String lastName;
 
     @Column(name = "email")
-    @NotNull
 //    @Pattern(regexp = "^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$")
     private String email;
 
     @Column(name = "password")
-    @NotNull
-    @Size(min = 3, max = 20)
+    @NotBlank
+    @Size(min = 3, max = 100)
     private String password;
 
     @Column(name = "birthday")
-    @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime birthday;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
 
     @Column(name = "gender")
-    @NotNull
     private String gender;
 
     @Column(name = "phone_number")
-    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 15)
     private String phoneNumber;
 }

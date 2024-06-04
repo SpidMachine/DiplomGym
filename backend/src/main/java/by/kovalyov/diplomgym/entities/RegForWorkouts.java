@@ -18,7 +18,7 @@ public class RegForWorkouts {
 
     @JoinColumn(name = "user_id")
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    private User userId;
+    private UserGym userGymId;
 
     @JoinColumn(name = "workout_id")
     @ManyToOne(optional = false, cascade = CascadeType.ALL)

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Workout} from "../entities/workout";
 import {FormsModule} from "@angular/forms";
-import {WorkoutService} from "../services/workout.service";
+import {WorkoutService} from "../workout-list/workout.service";
 import {Router} from "@angular/router";
 
 @Component({

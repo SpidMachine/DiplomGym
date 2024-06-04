@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForOf, NgIf} from "@angular/common";
 import {Workout} from "../entities/workout";
-import {WorkoutService} from "../services/workout.service";
+import {WorkoutService} from "./workout.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
 
 @Component({
   selector: 'app-workout-list',
@@ -10,7 +12,9 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     NgIf,
     HttpClientModule,
-    NgForOf
+    NgForOf,
+    ButtonModule,
+    TableModule
   ],
   templateUrl: './workout-list.component.html',
   styleUrl: './workout-list.component.css'

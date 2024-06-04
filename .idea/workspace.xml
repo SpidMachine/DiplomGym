@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b40bcd4-d9a2-466c-8fa1-f888dd2ef3c7" name="Changes" comment="" />
+    <list default="true" id="2b40bcd4-d9a2-466c-8fa1-f888dd2ef3c7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/by/kovalyov/diplomgym/config/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/by/kovalyov/diplomgym/dto/WorkoutDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/by/kovalyov/diplomgym/dto/WorkoutDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/by/kovalyov/diplomgym/entities/Workout.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/by/kovalyov/diplomgym/entities/Workout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/create-workout/create-workout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/create-workout/create-workout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/user.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/users-list/user.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/users-list/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/workout.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/workout-list/workout.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/workout.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/workout-list/workout.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/users-list/users-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/users-list/users-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/users-list/users-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/users-list/users-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/users-list/users-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/users-list/users-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/workout-list/workout-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/workout-list/workout-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/workout-list/workout-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/workout-list/workout-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +78,7 @@
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "corretto-17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/skiri/OneDrive/Documents/GitHub/DiplomGym/backend",
+    "last_opened_file_path": "C:/Users/skiri/OneDrive/Documents/GitHub/DiplomGym",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -90,6 +111,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
         <option value="jdk-17.0.9-corretto-17.0.9-4caba194b151-107bc6b7" />
       </set>
     </attachedChunks>
@@ -109,6 +131,8 @@
       <workItem from="1712238912063" duration="77000" />
       <workItem from="1712239229951" duration="30000" />
       <workItem from="1712317831851" duration="90000" />
+      <workItem from="1713869789436" duration="25000" />
+      <workItem from="1714124969321" duration="17000" />
     </task>
     <servers />
   </component>
