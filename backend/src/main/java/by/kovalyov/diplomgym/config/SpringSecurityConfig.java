@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
 public class SpringSecurityConfig {
     private final JwtRequestFilter jwtRequestFilter;
 

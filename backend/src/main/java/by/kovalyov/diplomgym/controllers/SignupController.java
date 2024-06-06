@@ -21,12 +21,12 @@ public class SignupController {
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<String> signupUser(@RequestBody SignupRequest signupRequest) {
+    public ResponseEntity<SignupUserResponseDto> signupUser(@RequestBody SignupRequest signupRequest) {
         boolean isUserCreated = authService.createUser(signupRequest);
         if (isUserCreated) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("lucky");
+            return ResponseEntity.status(HttpStatus.CREATED).body(new SignupUserResponseDto("Registered new user"));
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("unlucky");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new SignupUserResponseDto("Something wrong!"));
         }
     }
 }

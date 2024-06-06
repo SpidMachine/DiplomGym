@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SignupUserResponseDto {
-    private String result;
+public class LogoutResponse {
+    String result;
 }
