@@ -7,4 +7,5 @@ import lombok.Data;
 @Data
 public class LoginResponse {
     private String jwtToken;
+    private Integer status;
 }

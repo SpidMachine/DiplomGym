@@ -24,9 +24,9 @@ public class SignupController {
     public ResponseEntity<SignupUserResponseDto> signupUser(@RequestBody SignupRequest signupRequest) {
         boolean isUserCreated = authService.createUser(signupRequest);
         if (isUserCreated) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(new SignupUserResponseDto("Registered new user"));
+            return ResponseEntity.status(HttpStatus.CREATED).body(new SignupUserResponseDto("Вы успешно зарегистрировались", 1000));
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new SignupUserResponseDto("Something wrong!"));
+            return ResponseEntity.status(HttpStatus.OK).body(new SignupUserResponseDto("Пользователь с таким номером телефона уже существует", 1001));
         }
     }
 }

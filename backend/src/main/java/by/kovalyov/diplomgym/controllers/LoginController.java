@@ -1,5 +1,6 @@
 package by.kovalyov.diplomgym.controllers;
 
+import by.kovalyov.diplomgym.dto.IsLoggedResponse;
 import by.kovalyov.diplomgym.dto.LoginRequest;
 import by.kovalyov.diplomgym.dto.LoginResponse;
 import by.kovalyov.diplomgym.services.authServ.jwt.JwtUserServiceImpl;
@@ -9,13 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sign-in")
@@ -39,7 +39,7 @@ public class LoginController {
                     new UsernamePasswordAuthenticationToken(loginRequest.getPhoneNumber(), loginRequest.getPassword())
             );
         } catch (AuthenticationException e ) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.ok(new LoginResponse("1002", 1002));
         }
 
         UserDetails userDetails;
@@ -47,11 +47,16 @@ public class LoginController {
         try {
             userDetails = userService.loadUserByUsername(loginRequest.getPhoneNumber());
         } catch (UsernameNotFoundException e ) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.ok(new LoginResponse("1001", 1001));
         }
 
         String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
-        return ResponseEntity.ok(new LoginResponse(jwt));
+        return ResponseEntity.ok(new LoginResponse(jwt, 1000));
+    }
+
+    @GetMapping("/isLogged")
+    public IsLoggedResponse isLogged() {
+        return new IsLoggedResponse(SecurityContextHolder.getContext().getAuthentication());
     }
 }

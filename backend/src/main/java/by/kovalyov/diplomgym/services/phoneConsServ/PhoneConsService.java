@@ -1,0 +1,10 @@
+package by.kovalyov.diplomgym.services.phoneConsServ;
+
+import by.kovalyov.diplomgym.entities.PhoneConsultation;
+
+import java.util.List;
+
+public interface PhoneConsService {
+    PhoneConsultation addPhoneConsultation(PhoneConsultation phoneConsultation);
+    List<PhoneConsultation> findAllPhoneConsultation();
+}

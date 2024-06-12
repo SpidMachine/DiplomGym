@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SignupUserResponseDto {
-    private String response;
-    private Integer status;
+public class PhoneConsultationDto {
+    private String name;
+    private String phoneNumber;
 }

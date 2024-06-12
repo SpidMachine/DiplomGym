@@ -2,10 +2,10 @@ package by.kovalyov.diplomgym.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.security.core.Authentication;
 
 @Data
 @AllArgsConstructor
-public class SignupUserResponseDto {
-    private String response;
-    private Integer status;
+public class IsLoggedResponse {
+    Authentication auth;
 }
