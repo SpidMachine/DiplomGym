@@ -4,6 +4,7 @@ import by.kovalyov.diplomgym.dto.IsLoggedResponse;
 import by.kovalyov.diplomgym.dto.LoginRequest;
 import by.kovalyov.diplomgym.dto.LoginResponse;
 import by.kovalyov.diplomgym.services.authServ.jwt.JwtUserServiceImpl;
+import by.kovalyov.diplomgym.services.userServ.UserServiceImpl;
 import by.kovalyov.diplomgym.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +25,14 @@ public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final JwtUserServiceImpl userService;
     private final JwtUtil jwtUtil;
+    private final UserServiceImpl service;
 
     @Autowired
-    public LoginController(AuthenticationManager authenticationManager, JwtUserServiceImpl userService, JwtUtil jwtUtil) {
+    public LoginController(AuthenticationManager authenticationManager, JwtUserServiceImpl userService, JwtUtil jwtUtil, UserServiceImpl service) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.jwtUtil = jwtUtil;
+        this.service = service;
     }
 
     @PostMapping
@@ -39,7 +42,7 @@ public class LoginController {
                     new UsernamePasswordAuthenticationToken(loginRequest.getPhoneNumber(), loginRequest.getPassword())
             );
         } catch (AuthenticationException e ) {
-            return ResponseEntity.ok(new LoginResponse("1002", 1002));
+            return ResponseEntity.ok(new LoginResponse("1002", 1002, null));
         }
 
         UserDetails userDetails;
@@ -47,12 +50,12 @@ public class LoginController {
         try {
             userDetails = userService.loadUserByUsername(loginRequest.getPhoneNumber());
         } catch (UsernameNotFoundException e ) {
-            return ResponseEntity.ok(new LoginResponse("1001", 1001));
+            return ResponseEntity.ok(new LoginResponse("1001", 1001, null));
         }
 
         String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
-        return ResponseEntity.ok(new LoginResponse(jwt, 1000));
+        return ResponseEntity.ok(new LoginResponse(jwt, 1000, service.findUserIdByPhoneNumber(loginRequest.getPhoneNumber())));
     }
 
     @GetMapping("/isLogged")

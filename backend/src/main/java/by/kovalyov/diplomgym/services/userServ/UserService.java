@@ -10,4 +10,5 @@ public interface UserService {
     UserGym createUser(UserGym userGym);
     UserGym updateUser(Long id, UserGym userGym);
     UserGym deleteUser(Long id);
+    Long findUserIdByPhoneNumber(String phoneNumber);
 }

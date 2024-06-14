@@ -1,9 +1,7 @@
 package by.kovalyov.diplomgym.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,25 +14,31 @@ public class Coach {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
-    @NotNull
-    @Size(min = 3, max = 20)
-    private String firstName;
-
-    @Column(name = "second_name")
-    @NotNull
-    @Size(min = 3, max = 20)
-    private String secondName;
+    @Column(name = "name")
+    @NotBlank
+    private String name;
 
     @Column(name = "email")
-    @NotNull
+    @NotBlank
     private String email;
 
     @Column(name = "phone_number")
-    @NotNull
+    @NotBlank
     private String phoneNumber;
 
     @Column(name = "specialization")
-    @NotNull
+    @NotBlank
     private String specialization;
+
+    @Column(name = "description")
+    @NotBlank
+    private String description;
+
+    @Column(name = "place")
+    @NotBlank
+    private String place;
+
+    @Column(name = "photo_url")
+    @NotBlank
+    private String photoUrl;
 }
