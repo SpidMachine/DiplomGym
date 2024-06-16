@@ -23,6 +23,12 @@ public class CoachController {
         return coachService.findAllCoaches();
     }
 
+    @GetMapping("/coaches/{id}")
+    public ResponseEntity<Coach> getUserById(@PathVariable Long id) {
+        Coach coach = coachService.findCoachById(id);
+        return new ResponseEntity<>(coach, HttpStatus.OK);
+    }
+
     @PostMapping("/coaches/add")
     public ResponseEntity<Coach> addNewCoach(@RequestBody Coach coach) {
         Coach _coach = coachService.addNewCoach(coach);

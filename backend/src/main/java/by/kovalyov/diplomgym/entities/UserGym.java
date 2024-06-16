@@ -46,4 +46,7 @@ public class UserGym {
     @NotBlank
     @Size(min = 3, max = 35)
     private String phoneNumber;
+
+    @Column(name = "role")
+    private Role role;
 }

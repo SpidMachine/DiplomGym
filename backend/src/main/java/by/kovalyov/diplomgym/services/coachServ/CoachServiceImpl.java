@@ -22,6 +22,11 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
+    public Coach findCoachById(Long id) {
+        return coachRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+    }
+
+    @Override
     public Coach addNewCoach(Coach coach) {
         return coachRepository.save(coach);
     }

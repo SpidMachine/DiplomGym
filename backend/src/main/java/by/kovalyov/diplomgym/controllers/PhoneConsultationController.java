@@ -22,7 +22,7 @@ public class PhoneConsultationController {
         this.phoneConsService = phoneConsService;
     }
 
-    @PostMapping
+    @PostMapping("/sign-up")
     private ResponseEntity<PhoneConsultation> createPhoneConsultation(@RequestBody PhoneConsultation phoneConsultation) {
         PhoneConsultation _phoneConsultation = phoneConsService.addPhoneConsultation(phoneConsultation);
         return new ResponseEntity<>(_phoneConsultation, HttpStatus.CREATED);

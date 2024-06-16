@@ -1,5 +1,6 @@
 package by.kovalyov.diplomgym.services.authServ.jwt;
 
+import by.kovalyov.diplomgym.entities.Role;
 import by.kovalyov.diplomgym.entities.UserGym;
 import by.kovalyov.diplomgym.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,6 @@ public class JwtUserServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
         UserGym userGym = userRepository.findByPhoneNumber(phoneNumber).orElseThrow(() ->
                 new UsernameNotFoundException("User not found with phone number: " + phoneNumber));
-        return new User(userGym.getPhoneNumber(), userGym.getPassword(), Collections.emptyList());
+        return new User(userGym.getPhoneNumber(), userGym.getPassword(), Collections.singleton(userGym.getRole()));
     }
 }

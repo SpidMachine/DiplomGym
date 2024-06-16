@@ -22,4 +22,10 @@ public class PhoneConsultation {
     @Column(name = "phone_number")
     @NotBlank
     private String phoneNumber;
+
+    @Column(name = "coachName")
+    private String coachName;
+
+    @Column(name = "status")
+    private String status;
 }

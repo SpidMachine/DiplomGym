@@ -1,5 +1,6 @@
 package by.kovalyov.diplomgym.dto;
 
+import by.kovalyov.diplomgym.entities.Role;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
@@ -19,4 +20,5 @@ public class SignupRequest {
     private LocalDate birthday;
     private String gender;
     private String phoneNumber;
+    private Role role;
 }

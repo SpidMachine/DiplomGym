@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CoachService {
     List<Coach> findAllCoaches();
+    Coach findCoachById(Long id);
     Coach addNewCoach(Coach coach);
 }

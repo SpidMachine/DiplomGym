@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import static by.kovalyov.diplomgym.entities.Role.ADMIN;
+import static by.kovalyov.diplomgym.entities.Role.USER;
+
 @Service
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
@@ -27,6 +30,7 @@ public class AuthServiceImpl implements AuthService {
 
         UserGym userGym = new UserGym();
         BeanUtils.copyProperties(signupRequest, userGym);
+        userGym.setRole(USER);
 
         String hashPassword = passwordEncoder.encode(signupRequest.getPassword());
         userGym.setPassword(hashPassword);
