@@ -1,5 +1,6 @@
 package by.kovalyov.diplomgym.services.authServ.jwt;
 
+import by.kovalyov.diplomgym.config.UserGymDetails;
 import by.kovalyov.diplomgym.entities.Role;
 import by.kovalyov.diplomgym.entities.UserGym;
 import by.kovalyov.diplomgym.repo.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 public class JwtUserServiceImpl implements UserDetailsService {
@@ -24,8 +26,7 @@ public class JwtUserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String phoneNumber) throws UsernameNotFoundException {
-        UserGym userGym = userRepository.findByPhoneNumber(phoneNumber).orElseThrow(() ->
-                new UsernameNotFoundException("User not found with phone number: " + phoneNumber));
-        return new User(userGym.getPhoneNumber(), userGym.getPassword(), Collections.singleton(userGym.getRole()));
+        Optional<UserGym> userGym = userRepository.findByPhoneNumber(phoneNumber);
+        return userGym.map(UserGymDetails::new).orElseThrow(() -> new UsernameNotFoundException(phoneNumber + " not found"));
     }
 }

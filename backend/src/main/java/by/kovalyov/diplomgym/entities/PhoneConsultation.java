@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Time;
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -28,4 +31,7 @@ public class PhoneConsultation {
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "time_registration")
+    private LocalDateTime timeRegistration;
 }

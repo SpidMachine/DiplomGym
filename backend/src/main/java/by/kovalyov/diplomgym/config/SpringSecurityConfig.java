@@ -43,9 +43,10 @@ public class SpringSecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/sign-up", "/sign-in", "/phoneCons/sign-up", "/coaches/**", "/photo/**", "/users/{id}").permitAll();
-                    registry.requestMatchers("users").authenticated();
-                    registry.requestMatchers(HttpMethod.PUT, "/users/{id}").hasRole("USER");
+                    registry.requestMatchers("/sign-up", "/sign-in", "/phoneCons/sign-up", "/coaches", "/photo/**").permitAll();
+                    registry.requestMatchers(HttpMethod.GET, "/users/{id}").permitAll();
+                    registry.requestMatchers("/users", "/phoneCons").hasAuthority("ADMIN");
+                    registry.requestMatchers(HttpMethod.PUT, "/users/{id}").hasAnyAuthority("ADMIN", "USER");
                     registry.anyRequest().authenticated();
                 })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

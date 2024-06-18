@@ -32,4 +32,10 @@ public class PhoneConsultationController {
     private List<PhoneConsultation> getAllPhoneConsultation() {
         return phoneConsService.findAllPhoneConsultation();
     }
+
+    @PutMapping
+    private ResponseEntity<PhoneConsultation> updatePhoneConsultation(@RequestBody PhoneConsultation phoneConsultation, @PathVariable Long id) {
+        PhoneConsultation _phoneConsultation = phoneConsService.updatePhoneConsultation(phoneConsultation, id);
+        return new ResponseEntity<>(_phoneConsultation, HttpStatus.CREATED);
+    }
 }
