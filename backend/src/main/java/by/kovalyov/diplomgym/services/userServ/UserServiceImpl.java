@@ -4,6 +4,7 @@ import by.kovalyov.diplomgym.entities.UserGym;
 import by.kovalyov.diplomgym.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.acls.model.NotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,10 +13,12 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
     final UserRepository userRepository;
+    final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -30,6 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserGym createUser(UserGym userGym) {
+        userGym.setPassword(passwordEncoder.encode(userGym.getPassword()));
         return userRepository.save(userGym);
     }
 

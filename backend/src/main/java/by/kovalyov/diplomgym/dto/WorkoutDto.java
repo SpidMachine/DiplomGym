@@ -1,22 +1,19 @@
 package by.kovalyov.diplomgym.dto;
 
+import by.kovalyov.diplomgym.entities.Coach;
+import by.kovalyov.diplomgym.entities.UserGym;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
-@Builder
 public class WorkoutDto {
+    private Long id;
     private String nameOfTraining;
-
-    private String startTraining;
-
-    private String endTraining;
-
-    private String dayWeek;
-
-    private String maxPeople;
-
-    private String currentPeople;
-
-    private String coachId;
+    private LocalDateTime timeRegistration;
+    private UserGym userGymId;
+    private Coach coachId;
+    private String status;
 }

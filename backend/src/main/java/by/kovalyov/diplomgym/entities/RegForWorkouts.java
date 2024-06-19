@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,7 +27,7 @@ public class RegForWorkouts {
 
     @Column(name = "registration_time")
     @NotNull
-    private LocalDateTime regTime;
+    private LocalDate regTime;
 
     @Column(name = "status")
     @NotNull

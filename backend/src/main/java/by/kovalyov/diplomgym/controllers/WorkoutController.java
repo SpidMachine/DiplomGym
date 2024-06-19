@@ -1,7 +1,10 @@
 package by.kovalyov.diplomgym.controllers;
 
+import by.kovalyov.diplomgym.dto.WorkoutDto;
+import by.kovalyov.diplomgym.entities.UserGym;
 import by.kovalyov.diplomgym.entities.Workout;
 import by.kovalyov.diplomgym.services.workoutServ.WorkoutService;
+import org.apache.logging.log4j.message.LoggerNameAwareMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +22,24 @@ public class WorkoutController {
         this.workoutService = workoutService;
     }
 
-    @GetMapping("/workouts/{coachName}")
-    public List<Workout> getWorkoutsByCoachName(@PathVariable String coachName) {
-        return workoutService.getWorkoutsByCoachName(coachName);
+    @GetMapping("/workouts/coach/{coachId}")
+    public List<Workout> getWorkoutsByCoachId(@PathVariable Long coachId) {
+        return workoutService.getWorkoutsByCoachId(coachId);
+    }
+
+    @GetMapping("/workouts/profile/{userId}")
+    public List<Workout> getWorkoutsByUserGymId(@PathVariable Long userId) {
+        return workoutService.getWorkoutsByUserGymId(userId);
     }
 
     @GetMapping("/workouts")
     public List<Workout> getWorkouts() {
         return workoutService.getWorkouts();
+    }
+
+    @GetMapping("/workouts/{id}")
+    public Workout getWorkout(@PathVariable Long id) {
+        return workoutService.getWorkoutById(id);
     }
 
     @PostMapping("/workouts")

@@ -1,14 +1,23 @@
 package by.kovalyov.diplomgym.services.workoutServ;
 
+import by.kovalyov.diplomgym.entities.Coach;
+import by.kovalyov.diplomgym.entities.UserGym;
 import by.kovalyov.diplomgym.entities.Workout;
+import by.kovalyov.diplomgym.repo.UserRepository;
 import by.kovalyov.diplomgym.repo.WorkoutRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
-    final WorkoutRepository workoutRepository;
+    private final WorkoutRepository workoutRepository;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     public WorkoutServiceImpl(WorkoutRepository workoutRepository) {
         this.workoutRepository = workoutRepository;
@@ -25,21 +34,19 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
+    @Transactional
     public Workout createWorkout(Workout workout) {
-        return workoutRepository.save(workout);
+        return entityManager.merge(workout);
     }
 
     @Override
     public Workout updateWorkout(Long id, Workout workout) {
         Workout _workout = workoutRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
 
-        _workout.setNameOfTraining(workout.getNameOfTraining());
-        _workout.setStartTraining(workout.getStartTraining());
-        _workout.setEndTraining(workout.getEndTraining());
-        _workout.setDayWeek(workout.getDayWeek());
-        _workout.setMaxPeople(workout.getMaxPeople());
-        _workout.setCurrentPeople(workout.getCurrentPeople());
+        _workout.setDescription(workout.getDescription());
+        _workout.setUserGymId(workout.getUserGymId());
         _workout.setCoachId(workout.getCoachId());
+        _workout.setStatus(workout.getStatus());
 
         return workoutRepository.save(_workout);
     }
@@ -52,7 +59,12 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
-    public List<Workout> getWorkoutsByCoachName(String coachName) {
-        return workoutRepository.getWorkoutsByCoachName(coachName);
+    public List<Workout> getWorkoutsByCoachId(Long coachId) {
+        return workoutRepository.getWorkoutsByCoachId(coachId);
+    }
+
+    @Override
+    public List<Workout> getWorkoutsByUserGymId(Long id) {
+        return workoutRepository.getWorkoutsByUserGymId(id);
     }
 }

@@ -1,6 +1,9 @@
 package by.kovalyov.diplomgym.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -20,29 +23,20 @@ public class Workout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name_of_training")
-    private String nameOfTraining;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "start_training")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime startTraining;
-
-    @Column(name = "end_training")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime endTraining;
-
-    @Column(name = "day_of_week")
-    private String dayWeek;
-
-    @Column(name = "max_people")
-    @NotNull
-    private Integer maxPeople;
-
-    @Column(name = "current_people")
-    @NotNull
-    private Integer currentPeople;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserGym userGymId;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "coach_id")
     private Coach coachId;
+
+    @Column(name = "time_registration")
+    private LocalDateTime timeRegistration;
+
+    @Column(name = "status")
+    private String status;
 }
