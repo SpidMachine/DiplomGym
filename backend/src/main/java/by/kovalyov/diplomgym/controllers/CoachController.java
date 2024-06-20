@@ -47,7 +47,6 @@ public class CoachController {
 
         if (file != null) {
             file.transferTo(new File(uploadPath + "/" + file.getOriginalFilename()));
-
             _coach.setPhotoUrl(file.getOriginalFilename());
         }
 
