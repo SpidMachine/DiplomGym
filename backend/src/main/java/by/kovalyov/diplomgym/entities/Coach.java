@@ -41,6 +41,5 @@ public class Coach {
     private String place;
 
     @Column(name = "photo_url")
-    @NotBlank
     private String photoUrl;
 }

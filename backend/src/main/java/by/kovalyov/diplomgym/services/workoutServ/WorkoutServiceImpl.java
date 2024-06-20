@@ -25,7 +25,7 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public Workout getWorkoutById(Long id) {
-        return workoutRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        return workoutRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found workout"));
     }
 
     @Override
