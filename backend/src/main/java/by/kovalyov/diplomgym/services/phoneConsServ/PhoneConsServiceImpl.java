@@ -39,4 +39,9 @@ public class PhoneConsServiceImpl implements PhoneConsService {
 
         return _phoneConsultation;
     }
+
+    @Override
+    public PhoneConsultation findPhoneConsultationById(Long id) {
+        return phoneConsultationRepository.findById(id).orElseThrow();
+    }
 }

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-@RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RestController
 @RequestMapping("phoneCons")
 public class PhoneConsultationController {
 
@@ -33,7 +33,12 @@ public class PhoneConsultationController {
         return phoneConsService.findAllPhoneConsultation();
     }
 
-    @PutMapping
+    @GetMapping("/{id}")
+    private PhoneConsultation getPhoneConsultationById(@PathVariable Long id) {
+        return phoneConsService.findPhoneConsultationById(id);
+    }
+
+    @PutMapping("/{id}")
     private ResponseEntity<PhoneConsultation> updatePhoneConsultation(@RequestBody PhoneConsultation phoneConsultation, @PathVariable Long id) {
         PhoneConsultation _phoneConsultation = phoneConsService.updatePhoneConsultation(phoneConsultation, id);
         return new ResponseEntity<>(_phoneConsultation, HttpStatus.CREATED);

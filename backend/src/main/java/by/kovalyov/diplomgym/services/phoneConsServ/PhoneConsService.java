@@ -8,4 +8,5 @@ public interface PhoneConsService {
     PhoneConsultation addPhoneConsultation(PhoneConsultation phoneConsultation);
     List<PhoneConsultation> findAllPhoneConsultation();
     PhoneConsultation updatePhoneConsultation(PhoneConsultation phoneConsultation, Long id);
+    PhoneConsultation findPhoneConsultationById(Long id);
 }
