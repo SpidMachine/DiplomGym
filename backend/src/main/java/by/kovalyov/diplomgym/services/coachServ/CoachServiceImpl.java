@@ -1,7 +1,10 @@
 package by.kovalyov.diplomgym.services.coachServ;
 
+import by.kovalyov.diplomgym.dto.controller.coach.CreateCoachRequestDto;
 import by.kovalyov.diplomgym.entities.Coach;
 import by.kovalyov.diplomgym.repo.CoachRepository;
+import by.kovalyov.diplomgym.services.file.FileService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,13 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CoachServiceImpl implements CoachService {
     private final CoachRepository coachRepository;
-
-    @Autowired
-    public CoachServiceImpl(CoachRepository coachRepository) {
-        this.coachRepository = coachRepository;
-    }
+    private final FileService fileService;
 
     @Override
     public List<Coach> findAllCoaches() {
@@ -28,7 +28,18 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
-    public Coach addNewCoach(Coach coach) {
+    public Coach addNewCoach(CreateCoachRequestDto coachRequestDto) {
+        String path = fileService.saveFile(coachRequestDto.getPhotoBase64());
+
+        Coach coach = new Coach();
+        coach.setName(coachRequestDto.getName());
+        coach.setEmail(coachRequestDto.getEmail());
+        coach.setPlace(coachRequestDto.getPlace());
+        coach.setSpecialization(coachRequestDto.getSpecialization());
+        coach.setPhoneNumber(coachRequestDto.getPhoneNumber());
+        coach.setDescription(coachRequestDto.getDescription());
+        coach.setPhotoUrl(path);
+
         return coachRepository.save(coach);
     }
 
@@ -53,12 +64,5 @@ public class CoachServiceImpl implements CoachService {
         Coach coach = coachRepository.findById(id).orElseThrow();
         coachRepository.deleteById(id);
         return coach;
-    }
-
-    @Override
-    public void addPhotoCoach(Coach coach, MultipartFile file) {
-        Coach _coach = coachRepository.findById(coach.getId()).orElseThrow();
-
-        _coach.setPhotoUrl(file.getOriginalFilename());
     }
 }

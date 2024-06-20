@@ -1,28 +1,24 @@
 package by.kovalyov.diplomgym.controllers;
 
-import by.kovalyov.diplomgym.dto.CoachDto;
+import by.kovalyov.diplomgym.dto.controller.coach.CreateCoachRequestDto;
 import by.kovalyov.diplomgym.entities.Coach;
-import by.kovalyov.diplomgym.entities.UserGym;
-import by.kovalyov.diplomgym.services.coachServ.CoachService;
 import by.kovalyov.diplomgym.services.coachServ.CoachServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
-
-import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class CoachController {
     @Value("${upload.path}")
-
     private String uploadPath;
     private final CoachServiceImpl coachService;
 
@@ -42,13 +38,8 @@ public class CoachController {
     }
 
     @PostMapping(path = "/coaches/add")
-    public ResponseEntity<Coach> addNewCoach(@RequestBody Coach coach, @RequestPart(value = "photoUrl", required = false) MultipartFile file) throws IOException {
-        Coach _coach = coachService.addNewCoach(coach);
-
-        if (file != null) {
-            file.transferTo(new File(uploadPath + "/" + file.getOriginalFilename()));
-            _coach.setPhotoUrl(file.getOriginalFilename());
-        }
+    public ResponseEntity<Coach> addNewCoach(@RequestBody CreateCoachRequestDto coachRequestDto) throws IOException {
+        Coach _coach = coachService.addNewCoach(coachRequestDto);
 
         return new ResponseEntity<>(_coach, HttpStatus.CREATED);
     }

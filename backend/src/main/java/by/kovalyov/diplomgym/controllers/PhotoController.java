@@ -1,5 +1,8 @@
 package by.kovalyov.diplomgym.controllers;
 
+import by.kovalyov.diplomgym.entities.Coach;
+import by.kovalyov.diplomgym.services.coachServ.CoachService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +15,16 @@ import java.nio.file.Paths;
 import java.util.UUID;
 
 @RestController
+@RequiredArgsConstructor
 public class PhotoController {
 
-    @Value("${upload.path}")
-    private String uploadPath;
+    private final CoachService coachService;
 
-    @GetMapping("/photo/{filename}")
-    public ResponseEntity<byte[]> getPhoto(@PathVariable String filename) {
+    @GetMapping("/photo/{id}")
+    public ResponseEntity<byte[]> getCoachPhoto(@PathVariable Long id) {
         try {
-            byte[] image = Files.readAllBytes(Paths.get(uploadPath, filename));
+            Coach coach = coachService.findCoachById(id);
+            byte[] image = Files.readAllBytes(Paths.get(coach.getPhotoUrl()));
             return ResponseEntity.ok().body(image);
         } catch (IOException e) {
             e.printStackTrace();
